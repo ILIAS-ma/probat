@@ -6,28 +6,28 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 
 const FAQ = [
   {
-    q: "Suis-je éligible aux Certificats d'Économies d'Énergie ?",
-    a: "La plupart des travaux d'amélioration énergétique sur les bâtiments tertiaires, industriels ou résidentiels sont éligibles. Notre audit gratuit détermine précisément votre éligibilité.",
+    q: "Comment obtenir un devis ?",
+    a: "Contactez-nous par téléphone, email ou via le formulaire du site. Nous nous déplaçons gratuitement pour évaluer votre projet et vous remettons un devis détaillé sous 24 à 48h ouvrées.",
   },
   {
-    q: "Le dispositif CEE est-il complexe à monter ?",
-    a: "Dispobat prend en charge l'intégralité du montage administratif. Vous n'avez rien à gérer : nous nous occupons du dossier, de la collecte des preuves et du versement de la prime.",
+    q: "Le déplacement pour l'estimation est-il payant ?",
+    a: "Non. Le déplacement et l'estimation sont totalement gratuits et sans engagement, quel que soit votre secteur en Île-de-France.",
   },
   {
-    q: "En quoi Dispobat se différencie des autres acteurs ?",
-    a: "20 ans d'expertise, un accompagnement 100% intégré (audit + travaux + montage), et un réseau d'entreprises RGE certifiées sur toute la France.",
+    q: "Quels types de projets réalisez-vous ?",
+    a: "Nous intervenons sur tout type de bâtiments tertiaires : hôtels, bureaux, immeubles, commerces. Peinture intérieure/extérieure, ravalement, revêtements muraux, décoration et traitements anti-humidité.",
   },
   {
-    q: "Quels sont les délais moyens ?",
-    a: "De l'audit au versement de la prime : entre 3 et 9 mois selon la complexité du projet. Nous vous informons à chaque étape.",
+    q: "Quels sont vos délais d'intervention ?",
+    a: "Selon la disponibilité de nos équipes et l'ampleur du chantier, nous pouvons intervenir sous 2 à 4 semaines. Pour les urgences, contactez-nous directement.",
   },
   {
-    q: "Qui exécute les travaux ?",
-    a: "Nos entreprises partenaires RGE, sélectionnées selon des critères stricts de qualité et de proximité géographique.",
+    q: "Utilisez-vous des matériaux écologiques ?",
+    a: "Oui. Sur demande, nous proposons des peintures écolabellisées à faible émission de COV et des matériaux respectueux de l'environnement.",
   },
   {
-    q: "Que faire en cas de blocage administratif ?",
-    a: "Nos experts CEE gèrent l'ensemble des relations avec le Pôle National CEE et prennent en charge toute résolution de blocage.",
+    q: "Proposez-vous une garantie sur vos travaux ?",
+    a: "Toutes nos réalisations bénéficient de la garantie décennale ainsi que de notre engagement qualité. Nous restons à votre disposition pour tout suivi post-chantier.",
   },
 ];
 
@@ -38,7 +38,7 @@ export function SiteFaq() {
     <section id="faq" className="py-24">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <FadeIn className="mb-12 text-center">
-          <h2 className="animated-gradient-text text-4xl font-bold tracking-tight md:text-5xl">
+          <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
             Questions fréquentes
           </h2>
         </FadeIn>

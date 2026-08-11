@@ -14,8 +14,8 @@ export function SitePartners() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="text-center">
-        <h2 className="animated-gradient-text text-3xl font-bold tracking-tight md:text-4xl">
-          Nos Qualifications
+        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          Nos qualifications
         </h2>
       </FadeIn>
 
@@ -24,12 +24,9 @@ export function SitePartners() {
       </FadeIn>
 
       <FadeIn className="mt-24 text-center">
-        <h2 className="animated-gradient-text text-3xl font-bold tracking-tight md:text-4xl">
-          Nos Partenaires de Confiance
+        <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          Ils nous font confiance
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground md:text-base">
-          Ils nous font confiance depuis nos débuts.
-        </p>
       </FadeIn>
 
       <Stagger

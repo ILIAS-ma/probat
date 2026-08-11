@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const WORDS = ["CEE", "aides", "primes"];
+const WORDS = ["soignées", "maîtrisées", "durables"];
 
 export function SiteHero() {
   const [index, setIndex] = useState(0);
@@ -35,7 +35,7 @@ export function SiteHero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
           </span>
-          Certificats d&apos;Économies d&apos;Énergie (CEE)
+          Devis gratuit sous 24h
         </motion.span>
 
         <motion.h1
@@ -44,27 +44,23 @@ export function SiteHero() {
           transition={{ duration: 0.8, delay: 0.1, ease: easeOut }}
           className="mt-8 text-5xl font-bold leading-tight tracking-tight md:text-7xl"
         >
-          Optimisez vos rénovations{" "}
-          <span className="block">
-            avec les{" "}
-            <span className="relative inline-flex min-w-[3ch] justify-center align-baseline">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={WORDS[index]}
-                  initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-                  transition={{ duration: 0.45, ease: easeOut }}
-                  className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-[length:200%_auto] bg-clip-text text-transparent"
-                  style={{
-                    animation: "gradient-sweep 3s linear infinite",
-                  }}
-                >
-                  {WORDS[index]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+          Des finitions{" "}
+          <span className="relative inline-flex min-w-[6ch] justify-center align-baseline">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={WORDS[index]}
+                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
+                transition={{ duration: 0.45, ease: easeOut }}
+                className="inline-block bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 bg-[length:200%_auto] bg-clip-text text-transparent"
+                style={{ animation: "gradient-sweep 3s linear infinite" }}
+              >
+                {WORDS[index]}
+              </motion.span>
+            </AnimatePresence>
           </span>
+          <span className="block">un service maîtrisé.</span>
         </motion.h1>
 
         <motion.p
@@ -73,8 +69,9 @@ export function SiteHero() {
           transition={{ duration: 0.7, delay: 0.25, ease: easeOut }}
           className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl"
         >
-          Dispobat vous accompagne de A à Z dans le montage de vos dossiers CEE
-          pour financer vos travaux de rénovation énergétique.
+          Depuis plus de 10 ans, DISPO BAT met son savoir-faire au service des
+          professionnels pour tous leurs projets de peinture, ravalement et
+          décoration intérieure.
         </motion.p>
 
         <motion.div
@@ -87,11 +84,32 @@ export function SiteHero() {
             href="#contact"
             className="rounded-full bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30"
           >
-            Demandez un audit gratuit
+            Demandez votre devis gratuit
           </Link>
-          <Link href="#contact" className="glass-btn">
-            Contactez-nous
+          <Link href="#services" className="glass-btn">
+            Voir plus →
           </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: easeOut }}
+          className="mt-14 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground"
+        >
+          <div className="flex items-baseline gap-2">
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              +13
+            </span>
+            <span>années d&apos;expérience</span>
+          </div>
+          <span className="hidden h-4 w-px bg-border sm:inline-block" />
+          <div className="flex items-baseline gap-2">
+            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              +150
+            </span>
+            <span>chantiers livrés</span>
+          </div>
         </motion.div>
       </div>
     </section>

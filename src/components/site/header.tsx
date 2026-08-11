@@ -6,7 +6,8 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
 
 const NAV = [
-  { href: "#services", label: "Nos services" },
+  { href: "#a-propos", label: "À propos" },
+  { href: "#services", label: "Nos expertises" },
   { href: "#references", label: "Réalisations" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
@@ -22,7 +23,7 @@ export function SiteHeader() {
           <div className="grid h-8 w-8 place-items-center rounded-md bg-blue-600 font-bold text-white">
             D
           </div>
-          <span className="text-lg font-bold tracking-tight">Dispobat</span>
+          <span className="text-lg font-bold tracking-tight">DISPO BAT</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

@@ -1,71 +1,73 @@
 "use client";
 
-import Image from "next/image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 
 const SERVICES = [
   {
-    title: "ENERGIES RENOUVELABLES",
-    img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80",
-    alt: "Panneaux solaires sur toiture au coucher de soleil",
+    title: "Peinture Professionnelle",
+    desc: "Peinture intérieure et extérieure avec finitions haut de gamme. Techniques modernes et matériaux premium pour des résultats durables.",
   },
   {
-    title: "GESTION TECHNIQUE DU BÂTIMENT",
-    img: "https://images.unsplash.com/photo-1581092335397-9fa73b09f9c4?auto=format&fit=crop&w=900&q=80",
-    alt: "Technicien en gestion technique du bâtiment",
+    title: "Traitements Anti-Humidité",
+    desc: "Diagnostic complet et solutions durables contre l'humidité. Injection de résine, enduits hydrofuges pour une protection optimale.",
   },
   {
-    title: "ISOLATION",
-    img: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=900&q=80",
-    alt: "Matériaux d'isolation thermique",
+    title: "Décoration Intérieure",
+    desc: "Aménagement sur mesure d'espaces professionnels. Design moderne et fonctionnel adapté à votre image de marque.",
   },
   {
-    title: "ECLAIRAGE",
-    img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80",
-    alt: "Éclairage intérieur design",
+    title: "Conseils et Accompagnement",
+    desc: "Expertise couleurs et finitions personnalisées. Échantillons, tests couleurs et devis gratuits avec suivi complet.",
   },
 ];
 
 export function SiteServices() {
   return (
     <section id="services" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-      <FadeIn className="mb-14">
-        <h2 className="text-5xl font-black uppercase tracking-tight md:text-6xl lg:text-7xl">
-          Rentabilisez vos rénovations
+      <FadeIn className="mb-14 max-w-2xl">
+        <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+          Nos expertises
         </h2>
-        <p className="mt-6 max-w-4xl text-base text-blue-600 md:text-lg">
-          Nous accompagnons les foncières, les collectivités et les entreprises
-          dans la réduction de leurs consommations, la valorisation de leurs
-          économies et l&apos;accélération de la décarbonation de leurs actifs.
+        <p className="mt-4 text-muted-foreground">
+          De la préparation à la finition, nous maîtrisons chaque étape pour
+          garantir des résultats à la hauteur de vos exigences.
         </p>
       </FadeIn>
 
       <Stagger
         className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
-        stagger={0.1}
+        stagger={0.08}
       >
         {SERVICES.map((s) => (
           <StaggerItem key={s.title}>
-            <div className="group relative aspect-[3/4] overflow-hidden rounded-xl cursor-pointer">
-              <Image
-                src={s.img}
-                alt={s.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/95" />
-              <div className="absolute inset-0 border-2 border-transparent transition-colors duration-500 group-hover:border-blue-500/60" />
-              <div className="absolute inset-x-0 bottom-0 p-6 transition-transform duration-500 group-hover:-translate-y-2">
-                <h3 className="text-lg font-bold uppercase tracking-wide text-white md:text-xl">
-                  {s.title}
-                </h3>
-                <div className="mt-3 h-0.5 w-8 origin-left scale-x-0 bg-blue-500 transition-transform duration-500 group-hover:scale-x-100" />
-              </div>
-            </div>
+            <ServiceCard title={s.title} desc={s.desc} />
           </StaggerItem>
         ))}
       </Stagger>
     </section>
+  );
+}
+
+function ServiceCard({
+  title,
+  desc,
+}: {
+  title: string;
+  desc: string;
+}) {
+  return (
+    <div className="group glass relative flex h-full flex-col p-6 transition-all duration-500 hover:-translate-y-1 hover:ring-blue-500/30 md:p-7">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <h3 className="relative z-10 text-lg font-semibold tracking-tight">
+        {title}
+      </h3>
+      <p className="relative z-10 mt-3 text-sm leading-relaxed text-muted-foreground">
+        {desc}
+      </p>
+      <div className="relative z-10 mt-6 h-px w-8 origin-left scale-x-0 bg-blue-500 transition-transform duration-500 group-hover:scale-x-100" />
+    </div>
   );
 }

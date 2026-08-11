@@ -14,12 +14,12 @@ const STATS = [
 export function SiteStats() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-      <FadeIn className="mb-12 text-center">
-        <h2 className="animated-gradient-text text-4xl font-bold tracking-tight md:text-5xl">
-          Chiffres clés
+      <FadeIn className="mb-12 max-w-2xl">
+        <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+          Pourquoi nous choisir
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-          Une expertise reconnue du secteur.
+        <p className="mt-4 text-muted-foreground">
+          Une expérience solide et une exigence constante sur chaque chantier.
         </p>
       </FadeIn>
 

@@ -9,9 +9,9 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 const PAINT = "#3b82f6";
 
 const KPIS = [
-  { value: "97%", label: "Taux d'éligibilité", accent: false },
-  { value: "24h", label: "Réponse garantie", accent: false },
-  { value: "0€", label: "Frais d'audit", accent: false },
+  { value: "13+", label: "Années d'expérience", accent: false },
+  { value: "24h", label: "Devis sous 24h", accent: false },
+  { value: "0€", label: "Frais de déplacement", accent: false },
 ];
 
 export function SitePaintFeature() {
@@ -23,31 +23,27 @@ export function SitePaintFeature() {
         <div className="glass-strong grid gap-10 p-8 md:grid-cols-2 md:p-14 lg:p-16">
           {/* LEFT — Content */}
           <div className="flex flex-col justify-center">
-            <FadeIn>
-              <span className="inline-flex items-center gap-2 self-start rounded-full bg-blue-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-blue-600 ring-1 ring-blue-500/20 dark:text-blue-300">
-                Notre engagement
-              </span>
-            </FadeIn>
-
             <FadeIn delay={0.1}>
-              <h2 className="mt-6 text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
-                Vos économies,{" "}
-                <PaintHighlight>peintes</PaintHighlight> en toute{" "}
-                <PaintHighlight delay={0.6}>transparence</PaintHighlight>.
+              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+                Chaque{" "}
+                <PaintHighlight>couche</PaintHighlight> compte,{" "}
+                chaque{" "}
+                <PaintHighlight delay={0.6}>détail</PaintHighlight> aussi.
               </h2>
             </FadeIn>
 
             <FadeIn delay={0.25}>
               <p className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg">
-                Dispobat trace pour vous la meilleure voie pour maximiser vos
-                primes CEE — de l&apos;audit initial jusqu&apos;au versement.
+                Nos équipes qualifiées mettent leur savoir-faire au service de
+                votre projet — de la préparation des supports jusqu&apos;à la
+                finition.
               </p>
             </FadeIn>
 
             <FadeIn delay={0.4}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <PaintSplashButton href="#contact" primary>
-                  Estimer mes primes
+                  Demander un devis
                 </PaintSplashButton>
                 <Link href="#services" className="glass-btn">
                   Découvrir nos services
@@ -161,17 +157,6 @@ function KpiGlassCard({
         <div className="mt-1 text-sm text-muted-foreground">{label}</div>
       </div>
 
-      <div
-        className={`relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all duration-500 group-hover:text-white ${
-          accent
-            ? "bg-blue-500/10 text-blue-500 group-hover:bg-blue-500"
-            : "bg-blue-500/10 text-blue-600 group-hover:bg-blue-500 dark:text-blue-300"
-        }`}
-      >
-        <span className="text-xs font-bold">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
     </div>
   );
 }
