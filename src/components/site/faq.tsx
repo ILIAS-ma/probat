@@ -49,8 +49,8 @@ export function SiteFaq() {
             return (
               <StaggerItem key={i}>
                 <div
-                  className={`overflow-hidden rounded-2xl transition-colors duration-300 ${
-                    isOpen ? "bg-muted/50" : "bg-muted/25 hover:bg-muted/40"
+                  className={`glass transition-all duration-300 ${
+                    isOpen ? "ring-blue-500/30" : "hover:ring-blue-500/20"
                   }`}
                 >
                   <button

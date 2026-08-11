@@ -82,7 +82,7 @@ function StatCard({
   return (
     <div
       ref={ref}
-      className="group rounded-2xl bg-muted/30 p-8 text-center transition-all duration-500 hover:-translate-y-1 hover:bg-muted/60"
+      className="group glass p-8 text-center transition-all duration-500 hover:-translate-y-1 hover:ring-blue-500/30"
     >
       <div className="text-4xl font-bold tracking-tight text-blue-600 transition-transform duration-500 group-hover:scale-110 md:text-5xl">
         {formatted}

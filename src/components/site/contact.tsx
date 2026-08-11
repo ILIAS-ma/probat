@@ -141,54 +141,82 @@ export function SiteContact() {
   };
 
   return (
-    <section id="contact" className="py-24">
-      <div className="mx-auto max-w-4xl px-6 lg:px-8">
-        <FadeIn className="mb-10 text-center">
-          <h2 className="animated-gradient-text text-4xl font-bold tracking-tight md:text-5xl">
-            Estimez vos primes en 2 min
+    <section id="contact" className="relative overflow-hidden py-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-blue-400/10 blur-3xl" />
+      </div>
+
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16 lg:px-8">
+        {/* LEFT — Brand panel */}
+        <FadeIn direction="right" className="lg:sticky lg:top-24 lg:self-start">
+          <span className="inline-flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-blue-600 ring-1 ring-blue-500/20 dark:text-blue-300">
+            Simulateur CEE
+          </span>
+          <h2 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
+            Estimez vos primes{" "}
+            <span className="text-blue-600 dark:text-blue-400">en 2 min.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+          <p className="mt-5 text-base text-muted-foreground md:text-lg">
             5 questions rapides pour évaluer votre éligibilité et recevoir une
             estimation personnalisée sous 24h.
           </p>
+
+          <div className="mt-8 space-y-3">
+            {[
+              { k: "0 €", v: "Frais d'audit — 100% gratuit" },
+              { k: "24 h", v: "Réponse d'un expert Dispobat" },
+              { k: "0", v: "Engagement — sans obligation" },
+            ].map((b) => (
+              <div key={b.v} className="glass flex items-center gap-4 p-4">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-sm font-bold text-blue-600 dark:text-blue-300">
+                  {b.k}
+                </div>
+                <div className="text-sm font-medium text-foreground">{b.v}</div>
+              </div>
+            ))}
+          </div>
         </FadeIn>
 
-        <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl bg-muted/30 shadow-sm">
-            <div className="h-1 bg-muted">
-              <motion.div
-                className="h-full bg-blue-600"
-                initial={{ width: 0 }}
-                animate={{ width: state === "success" ? "100%" : `${progress}%` }}
-                transition={{ duration: 0.5, ease: easeOut }}
-              />
-            </div>
-
+        {/* RIGHT — Wizard */}
+        <FadeIn direction="left">
+          <div className="glass-strong relative overflow-hidden rounded-3xl">
+            {/* Segmented progress */}
             {state !== "success" && (
-              <div className="flex items-center justify-between px-6 py-4 sm:px-10">
-                <div className="text-xs font-semibold uppercase tracking-widest text-blue-600">
-                  Étape {step + 1} / {total}
-                </div>
-                <div className="hidden gap-1 sm:flex">
-                  {STEPS.map((label, i) => (
-                    <div
-                      key={label}
-                      className={cn(
-                        "text-xs font-medium transition-colors",
-                        i === step
-                          ? "text-foreground"
-                          : i < step
-                            ? "text-blue-600"
-                            : "text-muted-foreground/50"
-                      )}
-                    >
-                      {label}
-                      {i < STEPS.length - 1 && (
-                        <span className="mx-2 text-muted-foreground/30">·</span>
-                      )}
+              <div className="flex items-center gap-2 px-6 pt-6 sm:px-10 sm:pt-8">
+                {STEPS.map((label, i) => {
+                  const done = i < step;
+                  const active = i === step;
+                  return (
+                    <div key={label} className="flex flex-1 flex-col gap-2">
+                      <div className="relative h-1 overflow-hidden rounded-full bg-muted/70">
+                        <motion.div
+                          className="absolute inset-y-0 left-0 rounded-full bg-blue-600"
+                          initial={false}
+                          animate={{
+                            width: done ? "100%" : active ? "50%" : "0%",
+                          }}
+                          transition={{ duration: 0.5, ease: easeOut }}
+                        />
+                      </div>
+                      <div
+                        className={cn(
+                          "text-[10px] font-semibold uppercase tracking-widest transition-colors",
+                          active
+                            ? "text-foreground"
+                            : done
+                              ? "text-blue-600"
+                              : "text-muted-foreground/50"
+                        )}
+                      >
+                        {String(i + 1).padStart(2, "0")} · {label}
+                      </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
             )}
 
@@ -379,7 +407,7 @@ function StepSurface({
             min="0"
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            placeholder="Ex : 1200"
+            placeholder=""
             className="input-base pr-12 text-center text-2xl font-bold"
             autoFocus
           />
@@ -456,7 +484,6 @@ function StepContact({
             type="text"
             value={data.name}
             onChange={(e) => setData({ ...data, name: e.target.value })}
-            placeholder="Jean Dupont"
             className="input-base"
           />
         </Field>
@@ -465,7 +492,6 @@ function StepContact({
             type="text"
             value={data.company}
             onChange={(e) => setData({ ...data, company: e.target.value })}
-            placeholder="Ma Société SAS"
             className="input-base"
           />
         </Field>
@@ -475,7 +501,6 @@ function StepContact({
               type="email"
               value={data.email}
               onChange={(e) => setData({ ...data, email: e.target.value })}
-              placeholder="jean@exemple.com"
               className="input-base"
             />
           </Field>
@@ -484,7 +509,6 @@ function StepContact({
               type="tel"
               value={data.phone}
               onChange={(e) => setData({ ...data, phone: e.target.value })}
-              placeholder="+33 6 12 34 56 78"
               className="input-base"
             />
           </Field>
@@ -494,7 +518,6 @@ function StepContact({
             rows={3}
             value={data.message}
             onChange={(e) => setData({ ...data, message: e.target.value })}
-            placeholder="Précisions, contraintes, échéance…"
             className="input-base resize-none"
           />
         </Field>
@@ -528,29 +551,33 @@ function OptionCard({
   compact?: boolean;
 }) {
   return (
-    <button
+    <motion.button
       type="button"
       onClick={onClick}
+      animate={{ scale: selected ? 1.02 : 1 }}
+      transition={{ duration: 0.3, ease: easeOut }}
       className={cn(
-        "relative overflow-hidden rounded-2xl p-5 text-left transition-all duration-300",
+        "group relative overflow-hidden rounded-2xl p-5 text-left transition-[background,box-shadow,ring] duration-300",
         selected
-          ? "bg-blue-600 text-white shadow-lg shadow-blue-500/20"
-          : "bg-background/60 hover:-translate-y-0.5 hover:bg-muted",
+          ? "bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white shadow-[0_10px_30px_-8px_rgba(37,99,235,0.55)] ring-1 ring-blue-400/40"
+          : "bg-muted/40 ring-1 ring-transparent hover:-translate-y-0.5 hover:bg-muted/60 hover:ring-blue-500/30",
         compact && "py-4"
       )}
     >
-      <div className={cn("font-semibold", compact && "text-sm")}>{title}</div>
-      {desc && (
-        <div
-          className={cn(
-            "mt-1 text-xs",
-            selected ? "text-white/80" : "text-muted-foreground"
-          )}
-        >
-          {desc}
-        </div>
-      )}
-    </button>
+      <div className="relative">
+        <div className={cn("font-semibold", compact && "text-sm")}>{title}</div>
+        {desc && (
+          <div
+            className={cn(
+              "mt-1 text-xs",
+              selected ? "text-white/85" : "text-muted-foreground"
+            )}
+          >
+            {desc}
+          </div>
+        )}
+      </div>
+    </motion.button>
   );
 }
 

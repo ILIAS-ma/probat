@@ -27,25 +27,25 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 222 20% 11%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 222 18% 14%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 222 18% 14%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 222 15% 20%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 222 15% 20%;
+    --muted-foreground: 220 10% 72%;
+    --accent: 222 15% 22%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 222 15% 25%;
+    --input: 222 15% 25%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -63,6 +63,27 @@
     @apply w-full rounded-xl bg-muted/40 px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all duration-200;
     @apply focus:bg-background focus:ring-2 focus:ring-blue-500/60;
     @apply hover:bg-muted/60;
+  }
+
+  .glass {
+    @apply relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-xl ring-1 ring-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.04)];
+  }
+  .dark .glass {
+    @apply bg-white/[0.04] ring-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.25)];
+  }
+
+  .glass-strong {
+    @apply relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-2xl ring-1 ring-black/5 shadow-[0_12px_40px_rgba(0,0,0,0.06)];
+  }
+  .dark .glass-strong {
+    @apply bg-white/[0.06] ring-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.35)];
+  }
+
+  .glass-btn {
+    @apply relative overflow-hidden rounded-full bg-white/70 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur-xl ring-1 ring-black/5 shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)];
+  }
+  .dark .glass-btn {
+    @apply bg-white/[0.06] text-foreground ring-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:bg-white/[0.1] hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)];
   }
 
   .animated-gradient-text {

@@ -89,10 +89,7 @@ export function SiteHero() {
           >
             Demandez un audit gratuit
           </Link>
-          <Link
-            href="#contact"
-            className="rounded-full bg-muted/60 px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-muted"
-          >
+          <Link href="#contact" className="glass-btn">
             Contactez-nous
           </Link>
         </motion.div>
