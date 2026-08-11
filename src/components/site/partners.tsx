@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
 
 const PARTNERS = [
   { name: "FAYAT", subtitle: "BÂTIMENT", style: "serif" },
@@ -21,6 +22,14 @@ export function SitePartners() {
 
       <FadeIn className="mt-10 flex justify-center">
         <QualibatBadge />
+      </FadeIn>
+
+      <FadeIn className="mx-auto mt-12 max-w-3xl">
+        <BeforeAfterSlider
+          className="aspect-video"
+          beforeSrc="https://images.unsplash.com/photo-1595514535215-9a5e13d75a09?q=80&w=1600&auto=format&fit=crop"
+          afterSrc="https://images.unsplash.com/photo-1618221469555-7f3ad97540d6?q=80&w=1600&auto=format&fit=crop"
+        />
       </FadeIn>
 
       <FadeIn className="mt-24 text-center">
