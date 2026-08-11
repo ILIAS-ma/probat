@@ -4,17 +4,19 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
-
-const NAV = [
-  { href: "#a-propos", label: "À propos" },
-  { href: "#services", label: "Nos expertises" },
-  { href: "#references", label: "Réalisations" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
-];
+import { useT } from "@/lib/i18n";
 
 export function SiteHeader() {
+  const { t } = useT();
   const [open, setOpen] = useState(false);
+
+  const NAV = [
+    { href: "#a-propos", label: t("nav.about") },
+    { href: "#services", label: t("nav.services") },
+    { href: "#references", label: t("nav.portfolio") },
+    { href: "#faq", label: t("nav.faq") },
+    { href: "#contact", label: t("nav.contact") },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
@@ -80,7 +82,7 @@ export function SiteHeader() {
               </Link>
             ))}
             <div className="pt-3">
-              <LanguageSwitcher />
+              <LanguageSwitcher align="left" />
             </div>
           </div>
         </nav>

@@ -4,10 +4,12 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { FadeIn } from "@/components/ui/fade-in";
 import { cn } from "@/lib/utils";
+import { useT } from "@/lib/i18n";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export function SiteContact() {
+  const { t } = useT();
   const [state, setState] = useState<"idle" | "loading" | "success">("idle");
   const [data, setData] = useState({ name: "", email: "", message: "" });
 
@@ -42,29 +44,28 @@ export function SiteContact() {
         {/* LEFT — Brand + coordinates */}
         <FadeIn direction="right" className="lg:sticky lg:top-24 lg:self-start">
           <h2 className="text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl">
-            Parlons de{" "}
+            {t("contact.title.1")}{" "}
             <span className="text-blue-600 dark:text-blue-400">
-              votre projet.
+              {t("contact.title.2")}
             </span>
           </h2>
           <p className="mt-5 text-base text-muted-foreground md:text-lg">
-            Un devis gratuit, une réponse sous 24h. Contactez-nous par
-            téléphone, email ou via le formulaire.
+            {t("contact.subtitle")}
           </p>
 
           <div className="mt-8 space-y-3">
             <ContactRow
-              label="Téléphone"
+              label={t("contact.label.phone")}
               value="06 07 94 31 29"
               href="tel:+33607943129"
             />
             <ContactRow
-              label="Email"
+              label={t("contact.label.email")}
               value="dispobat@yahoo.fr"
               href="mailto:dispobat@yahoo.fr"
             />
             <ContactRow
-              label="Adresse"
+              label={t("contact.label.address")}
               value="7 rue d'Epinay, 92700 Colombes, France"
             />
           </div>
@@ -91,17 +92,16 @@ export function SiteContact() {
                     ✓
                   </motion.div>
                   <h3 className="mt-6 text-2xl font-bold">
-                    Message envoyé !
+                    {t("contact.success.title")}
                   </h3>
                   <p className="mt-3 max-w-md text-sm text-muted-foreground">
-                    Merci {data.name.split(" ")[0] || ""} ! Nous vous
-                    recontactons sous 24h ouvrées.
+                    {t("contact.success.desc")}
                   </p>
                   <button
                     onClick={reset}
                     className="mt-8 text-sm font-semibold text-blue-600 hover:text-blue-700"
                   >
-                    Envoyer un nouveau message →
+                    {t("contact.success.again")}
                   </button>
                 </motion.div>
               ) : (
@@ -112,7 +112,7 @@ export function SiteContact() {
                   onSubmit={submit}
                   className="space-y-5"
                 >
-                  <Field label="Nom" required>
+                  <Field label={t("contact.form.name")} required>
                     <input
                       type="text"
                       value={data.name}
@@ -122,7 +122,7 @@ export function SiteContact() {
                       className="input-base"
                     />
                   </Field>
-                  <Field label="Email" required>
+                  <Field label={t("contact.form.email")} required>
                     <input
                       type="email"
                       value={data.email}
@@ -132,7 +132,7 @@ export function SiteContact() {
                       className="input-base"
                     />
                   </Field>
-                  <Field label="Message" required>
+                  <Field label={t("contact.form.message")} required>
                     <textarea
                       rows={6}
                       value={data.message}
@@ -153,7 +153,9 @@ export function SiteContact() {
                         : "hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/30"
                     )}
                   >
-                    {state === "loading" ? "Envoi…" : "Envoyer ma demande →"}
+                    {state === "loading"
+                      ? t("contact.form.sending")
+                      : t("contact.form.send")}
                   </button>
                 </motion.form>
               )}

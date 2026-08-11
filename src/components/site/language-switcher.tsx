@@ -3,24 +3,27 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useT, type Lang } from "@/lib/i18n";
 
-const LANGUAGES = [
+const LANGUAGES: { code: Lang; label: string; short: string }[] = [
   { code: "fr", label: "Français", short: "FR" },
   { code: "en", label: "English", short: "EN" },
-] as const;
-
-type LangCode = (typeof LANGUAGES)[number]["code"];
+];
 
 interface LanguageSwitcherProps {
   className?: string;
+  align?: "left" | "right";
 }
 
-export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  className,
+  align = "right",
+}: LanguageSwitcherProps) {
+  const { lang, setLang } = useT();
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<LangCode>("fr");
   const ref = useRef<HTMLDivElement>(null);
 
-  const active = LANGUAGES.find((l) => l.code === current)!;
+  const active = LANGUAGES.find((l) => l.code === lang)!;
 
   useEffect(() => {
     if (!open) return;
@@ -69,15 +72,18 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.96 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute right-0 top-full z-50 mt-2 min-w-[140px] overflow-hidden rounded-xl bg-background p-1 shadow-xl ring-1 ring-black/5 backdrop-blur-xl"
+            className={cn(
+              "absolute top-full z-50 mt-2 min-w-[140px] overflow-hidden rounded-xl bg-background p-1 shadow-xl ring-1 ring-black/5 backdrop-blur-xl",
+              align === "left" ? "left-0" : "right-0"
+            )}
           >
-            {LANGUAGES.map((lang) => {
-              const isActive = lang.code === current;
+            {LANGUAGES.map((l) => {
+              const isActive = l.code === lang;
               return (
-                <li key={lang.code} role="option" aria-selected={isActive}>
+                <li key={l.code} role="option" aria-selected={isActive}>
                   <button
                     onClick={() => {
-                      setCurrent(lang.code);
+                      setLang(l.code);
                       setOpen(false);
                     }}
                     className={cn(
@@ -87,8 +93,8 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
                         : "text-foreground/80 hover:bg-muted"
                     )}
                   >
-                    <span>{lang.label}</span>
-                    <span className="text-xs opacity-60">{lang.short}</span>
+                    <span>{l.label}</span>
+                    <span className="text-xs opacity-60">{l.short}</span>
                   </button>
                 </li>
               );

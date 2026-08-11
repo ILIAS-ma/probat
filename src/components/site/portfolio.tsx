@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { useT } from "@/lib/i18n";
 
 const PROJECTS = [
   {
@@ -69,15 +70,14 @@ const PROJECTS = [
 ];
 
 export function SitePortfolio() {
+  const { t } = useT();
   return (
     <section id="references" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="mb-12 max-w-2xl">
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-          Nos réalisations
+          {t("portfolio.title")}
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          Quelques projets récents qui témoignent de notre savoir-faire.
-        </p>
+        <p className="mt-4 text-muted-foreground">{t("portfolio.subtitle")}</p>
       </FadeIn>
 
       <Stagger

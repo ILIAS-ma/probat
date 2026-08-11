@@ -2,6 +2,7 @@
 
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
+import { useT } from "@/lib/i18n";
 
 const PARTNERS = [
   { name: "FAYAT", subtitle: "BÂTIMENT", style: "serif" },
@@ -12,11 +13,12 @@ const PARTNERS = [
 ];
 
 export function SitePartners() {
+  const { t } = useT();
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Nos qualifications
+          {t("partners.qualifications")}
         </h2>
       </FadeIn>
 
@@ -27,14 +29,14 @@ export function SitePartners() {
       <FadeIn className="mx-auto mt-12 max-w-3xl">
         <BeforeAfterSlider
           className="aspect-video"
-          beforeSrc="https://images.unsplash.com/photo-1595514535215-9a5e13d75a09?q=80&w=1600&auto=format&fit=crop"
-          afterSrc="https://images.unsplash.com/photo-1618221469555-7f3ad97540d6?q=80&w=1600&auto=format&fit=crop"
+          beforeSrc="/img/avant.png"
+          afterSrc="/img/apres.png"
         />
       </FadeIn>
 
       <FadeIn className="mt-24 text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Ils nous font confiance
+          {t("partners.trusted")}
         </h2>
       </FadeIn>
 
