@@ -4,13 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import { useT } from "@/lib/i18n";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const WORDS = ["soignées", "maîtrisées", "durables"];
 
 export function SiteHero() {
+  const { t } = useT();
   const [index, setIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const words = [t("hero.word.1"), t("hero.word.2"), t("hero.word.3")];
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -23,10 +26,10 @@ export function SiteHero() {
   const glowX = useTransform(scrollYProgress, [0, 1], [0, -70]);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setIndex((i) => (i + 1) % WORDS.length);
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % 3);
     }, 2200);
-    return () => clearInterval(t);
+    return () => clearInterval(id);
   }, []);
 
   return (
@@ -72,11 +75,11 @@ export function SiteHero() {
             style={{ y: titleY, opacity: titleOpacity }}
             className="mt-8 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl"
           >
-            Des finitions{" "}
+            {t("hero.title.prefix")}{" "}
             <span className="relative inline-flex min-w-[6ch] justify-center align-baseline">
               <AnimatePresence mode="wait">
                 <motion.span
-                  key={WORDS[index]}
+                  key={words[index]}
                   initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
@@ -84,11 +87,11 @@ export function SiteHero() {
                   className="inline-block bg-gradient-to-r from-blue-400 via-blue-300 to-blue-400 bg-[length:200%_auto] bg-clip-text text-transparent"
                   style={{ animation: "gradient-sweep 3s linear infinite" }}
                 >
-                  {WORDS[index]}
+                  {words[index]}
                 </motion.span>
               </AnimatePresence>
             </span>
-            <span className="block">un service maîtrisé.</span>
+            <span className="block">{t("hero.title.suffix")}</span>
           </motion.h1>
         </motion.div>
 
@@ -98,9 +101,7 @@ export function SiteHero() {
           transition={{ duration: 0.7, delay: 0.25, ease: easeOut }}
           className="mx-auto mt-6 max-w-2xl text-lg text-white/80 md:text-xl"
         >
-          Depuis plus de 10 ans, DISPO BAT met son savoir-faire au service des
-          professionnels pour tous leurs projets de peinture, ravalement et
-          décoration intérieure.
+          {t("hero.subtitle")}
         </motion.p>
 
         <motion.div
@@ -113,13 +114,13 @@ export function SiteHero() {
             href="#contact"
             className="rounded-full bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-600/40"
           >
-            Demandez votre devis gratuit
+            {t("hero.cta.primary")}
           </Link>
           <Link
             href="#services"
             className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/25 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
           >
-            Voir plus →
+            {t("hero.cta.secondary")}
           </Link>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
+import { useT } from "@/lib/i18n";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -15,11 +16,12 @@ const PARTNERS = [
 ];
 
 export function SitePartners() {
+  const { t } = useT();
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Nos qualifications
+          {t("partners.qualifications")}
         </h2>
       </FadeIn>
 
@@ -32,14 +34,14 @@ export function SitePartners() {
       >
         <BeforeAfterSlider
           className="aspect-[16/10]"
-          beforeSrc="https://images.pexels.com/photos/3615725/pexels-photo-3615725.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          afterSrc="https://images.pexels.com/photos/19899066/pexels-photo-19899066.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          beforeSrc="/img/avant.png"
+          afterSrc="/img/apres.png"
         />
       </motion.div>
 
       <FadeIn className="mt-24 text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-          Ils nous font confiance
+          {t("partners.trusted")}
         </h2>
       </FadeIn>
 

@@ -1,8 +1,11 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { useT } from "@/lib/i18n";
 
 export function SiteAbout() {
+  const { t } = useT();
+
   return (
     <section id="a-propos" className="relative overflow-hidden py-28 md:py-36">
       <div
@@ -15,31 +18,31 @@ export function SiteAbout() {
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
         <FadeIn>
           <h2 className="text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
-            <span>Des </span>
-            <span className="text-blue-600 dark:text-blue-400">services</span>
-            <span> adaptés,</span>
+            <span>{t("about.title.1")} </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              {t("about.title.2")}
+            </span>
+            <span>{t("about.title.3")}</span>
             <br />
-            <span>une </span>
-            <span className="text-blue-600 dark:text-blue-400">expertise</span>
-            <span> reconnue</span>
+            <span>{t("about.title.4")} </span>
+            <span className="text-blue-600 dark:text-blue-400">
+              {t("about.title.5")}
+            </span>
+            <span> {t("about.title.6")}</span>
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Depuis <span className="font-semibold text-foreground">2012</span>,{" "}
-            <span className="font-semibold text-foreground">DISPO BAT</span>{" "}
-            accompagne les professionnels du bâtiment avec son expertise en
-            peinture, vitrerie et décoration intérieure. Notre équipe qualifiée
-            vous garantit des finitions de qualité supérieure.
+            {t("about.description")}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.35}>
           <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <MiniStat value="12+" label="Années d'expérience" />
-            <MiniStat value="500+" label="Chantiers livrés" />
-            <MiniStat value="98%" label="Clients satisfaits" />
+            <MiniStat value="12+" label={t("about.stat.years")} />
+            <MiniStat value="500+" label={t("about.stat.projects")} />
+            <MiniStat value="98%" label={t("about.stat.satisfaction")} />
           </div>
         </FadeIn>
       </div>

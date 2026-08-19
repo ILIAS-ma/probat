@@ -3,24 +3,25 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
-
-const STATS = [
-  { value: 13, suffix: "", label: "Années d'expérience" },
-  { value: 150, suffix: "", label: "Projets réalisés" },
-  { value: 100, suffix: "%", label: "Clients satisfaits" },
-  { value: 2.9, suffix: " M€", label: "CA 2025", decimals: 1 },
-];
+import { useT } from "@/lib/i18n";
 
 export function SiteStats() {
+  const { t } = useT();
+
+  const STATS = [
+    { value: 13, suffix: "", label: t("stats.years") },
+    { value: 150, suffix: "", label: t("stats.projects") },
+    { value: 100, suffix: "%", label: t("stats.satisfaction") },
+    { value: 2.9, suffix: " M€", label: t("stats.revenue"), decimals: 1 },
+  ];
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="mb-12 max-w-2xl">
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-          Pourquoi nous choisir
+          {t("stats.title")}
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          Une expérience solide et une exigence constante sur chaque chantier.
-        </p>
+        <p className="mt-4 text-muted-foreground">{t("stats.subtitle")}</p>
       </FadeIn>
 
       <Stagger

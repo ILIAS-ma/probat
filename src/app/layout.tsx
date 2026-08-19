@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PaintLoader } from "@/components/site/paint-loader";
+import { LanguageProvider } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "DISPO BAT — Peinture · Ravalement · Décoration intérieure",
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <PaintLoader />
-        {children}
+        <LanguageProvider>
+          <PaintLoader />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

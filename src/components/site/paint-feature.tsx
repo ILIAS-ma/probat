@@ -5,17 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { FadeIn } from "@/components/ui/fade-in";
+import { useT } from "@/lib/i18n";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 const PAINT = "#60a5fa";
 
-const KPIS = [
-  { value: "13+", label: "Années d'expérience" },
-  { value: "24h", label: "Devis sous 24h" },
-  { value: "0€", label: "Frais de déplacement" },
-];
-
 export function SitePaintFeature() {
+  const { t } = useT();
+
+  const KPIS = [
+    { value: t("feature.kpi.1.value"), label: t("feature.kpi.1.label") },
+    { value: t("feature.kpi.2.value"), label: t("feature.kpi.2.label") },
+    { value: t("feature.kpi.3.value"), label: t("feature.kpi.3.label") },
+  ];
+
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
       {/* Photo backdrop — same recipe as the hero, for a matching dark moment */}
@@ -41,31 +44,32 @@ export function SitePaintFeature() {
           <div className="flex flex-col justify-center">
             <FadeIn delay={0.1}>
               <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl">
-                Chaque{" "}
-                <PaintHighlight>couche</PaintHighlight> compte,{" "}
-                chaque{" "}
-                <PaintHighlight delay={0.6}>détail</PaintHighlight> aussi.
+                {t("feature.title.1")}{" "}
+                <PaintHighlight>{t("feature.title.2")}</PaintHighlight>{" "}
+                {t("feature.title.3")}{" "}
+                <PaintHighlight delay={0.6}>
+                  {t("feature.title.4")}
+                </PaintHighlight>{" "}
+                {t("feature.title.5")}
               </h2>
             </FadeIn>
 
             <FadeIn delay={0.25}>
               <p className="mt-6 max-w-lg text-base text-white/70 md:text-lg">
-                Nos équipes qualifiées mettent leur savoir-faire au service de
-                votre projet — de la préparation des supports jusqu&apos;à la
-                finition.
+                {t("feature.desc")}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.4}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <PaintSplashButton href="#contact" primary>
-                  Demander un devis
+                  {t("feature.cta.primary")}
                 </PaintSplashButton>
                 <Link
                   href="#services"
                   className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/25 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
                 >
-                  Découvrir nos services
+                  {t("feature.cta.secondary")}
                 </Link>
               </div>
             </FadeIn>

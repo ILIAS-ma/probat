@@ -1,37 +1,25 @@
 "use client";
 
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
-
-const SERVICES = [
-  {
-    title: "Peinture Professionnelle",
-    desc: "Peinture intérieure et extérieure avec finitions haut de gamme. Techniques modernes et matériaux premium pour des résultats durables.",
-  },
-  {
-    title: "Traitements Anti-Humidité",
-    desc: "Diagnostic complet et solutions durables contre l'humidité. Injection de résine, enduits hydrofuges pour une protection optimale.",
-  },
-  {
-    title: "Décoration Intérieure",
-    desc: "Aménagement sur mesure d'espaces professionnels. Design moderne et fonctionnel adapté à votre image de marque.",
-  },
-  {
-    title: "Conseils et Accompagnement",
-    desc: "Expertise couleurs et finitions personnalisées. Échantillons, tests couleurs et devis gratuits avec suivi complet.",
-  },
-];
+import { useT } from "@/lib/i18n";
 
 export function SiteServices() {
+  const { t } = useT();
+
+  const SERVICES = [
+    { title: t("services.1.title"), desc: t("services.1.desc") },
+    { title: t("services.2.title"), desc: t("services.2.desc") },
+    { title: t("services.3.title"), desc: t("services.3.desc") },
+    { title: t("services.4.title"), desc: t("services.4.desc") },
+  ];
+
   return (
     <section id="services" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="mb-14 max-w-2xl">
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-          Nos expertises
+          {t("services.title")}
         </h2>
-        <p className="mt-4 text-muted-foreground">
-          De la préparation à la finition, nous maîtrisons chaque étape pour
-          garantir des résultats à la hauteur de vos exigences.
-        </p>
+        <p className="mt-4 text-muted-foreground">{t("services.subtitle")}</p>
       </FadeIn>
 
       <Stagger
@@ -48,13 +36,7 @@ export function SiteServices() {
   );
 }
 
-function ServiceCard({
-  title,
-  desc,
-}: {
-  title: string;
-  desc: string;
-}) {
+function ServiceCard({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="group glass relative flex h-full flex-col p-6 transition-all duration-500 hover:-translate-y-1 hover:ring-blue-500/30 md:p-7">
       <div

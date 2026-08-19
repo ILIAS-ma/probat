@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { useT } from "@/lib/i18n";
 
 const FAQ = [
   {
@@ -32,6 +33,7 @@ const FAQ = [
 ];
 
 export function SiteFaq() {
+  const { t } = useT();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -39,7 +41,7 @@ export function SiteFaq() {
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
         <FadeIn className="mb-12 text-center">
           <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-            Questions fréquentes
+            {t("faq.title")}
           </h2>
         </FadeIn>
 

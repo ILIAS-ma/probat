@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
+import { useT } from "@/lib/i18n";
 
 export function SiteFooter() {
+  const { t } = useT();
+
   return (
     <footer className="bg-[#0b0f19]">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
@@ -16,24 +21,26 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-white/60">
-              Votre partenaire de confiance pour tous vos projets de peinture
-              et décoration intérieure. Plus de 10 ans d&apos;expertise au
-              service des professionnels.
+              {t("footer.tagline")}
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white">Nos services</h4>
+            <h4 className="text-sm font-semibold text-white">
+              {t("footer.services")}
+            </h4>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>Peinture intérieure et extérieure</li>
-              <li>Traitements anti-humidité</li>
-              <li>Décoration intérieure</li>
-              <li>Conseil personnalisé</li>
+              <li>{t("services.1.title")}</li>
+              <li>{t("services.2.title")}</li>
+              <li>{t("services.3.title")}</li>
+              <li>{t("services.4.title")}</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white">Contact</h4>
+            <h4 className="text-sm font-semibold text-white">
+              {t("footer.contact")}
+            </h4>
             <ul className="mt-4 space-y-2 text-sm text-white/60">
               <li>7 rue d&apos;Epinay</li>
               <li>92700 Colombes, France</li>
@@ -55,18 +62,23 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} DISPO BAT. Tous droits réservés.</p>
-          <div className="flex items-center gap-4">
+          <p>
+            © {new Date().getFullYear()} DISPO BAT. {t("footer.rights")}
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
             <Link href="#" className="hover:text-white">
-              Mentions légales
+              {t("footer.legal")}
             </Link>
             <Link href="/politique-de-confidentialite" className="hover:text-white">
-              Politique de confidentialité
+              {t("footer.privacy")}
             </Link>
             <Link href="#" className="hover:text-white">
-              CGU
+              {t("footer.terms")}
             </Link>
-            <LanguageSwitcher className="[&>button]:bg-white/10 [&>button]:text-white [&>button]:ring-1 [&>button]:ring-white/15 [&>button]:hover:bg-white/20" />
+            <LanguageSwitcher
+              align="left"
+              className="[&>button]:bg-white/10 [&>button]:text-white [&>button]:ring-1 [&>button]:ring-white/15 [&>button]:hover:bg-white/20"
+            />
           </div>
         </div>
       </div>
