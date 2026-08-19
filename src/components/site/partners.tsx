@@ -1,7 +1,10 @@
 "use client";
 
+import { motion } from "motion/react";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
+
+const easeOut = [0.22, 1, 0.36, 1] as const;
 
 const PARTNERS = [
   { name: "FAYAT", subtitle: "BÂTIMENT", style: "serif" },
@@ -20,17 +23,19 @@ export function SitePartners() {
         </h2>
       </FadeIn>
 
-      <FadeIn className="mt-10 flex justify-center">
-        <QualibatBadge />
-      </FadeIn>
-
-      <FadeIn className="mx-auto mt-12 max-w-3xl">
+      <motion.div
+        className="mx-auto mt-10 max-w-5xl"
+        initial={{ opacity: 0, y: 32, scale: 0.94 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: easeOut }}
+      >
         <BeforeAfterSlider
-          className="aspect-video"
-          beforeSrc="https://images.unsplash.com/photo-1595514535215-9a5e13d75a09?q=80&w=1600&auto=format&fit=crop"
-          afterSrc="https://images.unsplash.com/photo-1618221469555-7f3ad97540d6?q=80&w=1600&auto=format&fit=crop"
+          className="aspect-[16/10]"
+          beforeSrc="https://images.pexels.com/photos/3615725/pexels-photo-3615725.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          afterSrc="https://images.pexels.com/photos/19899066/pexels-photo-19899066.jpeg?auto=compress&cs=tinysrgb&w=1600"
         />
-      </FadeIn>
+      </motion.div>
 
       <FadeIn className="mt-24 text-center">
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
@@ -49,25 +54,6 @@ export function SitePartners() {
         ))}
       </Stagger>
     </section>
-  );
-}
-
-function QualibatBadge() {
-  return (
-    <div className="group flex aspect-square h-32 w-32 items-center justify-center rounded-2xl bg-white shadow-md ring-1 ring-black/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:ring-blue-500/30 dark:bg-white/95">
-      <div className="flex flex-col items-center">
-        <div
-          aria-hidden
-          className="h-14 w-14 rounded-md bg-gradient-to-br from-blue-500 to-blue-700 transition-transform duration-500 group-hover:scale-110"
-          style={{
-            clipPath: "polygon(50% 12%, 88% 88%, 12% 88%)",
-          }}
-        />
-        <span className="mt-2 text-[10px] font-bold tracking-widest text-blue-700">
-          QUALIBAT
-        </span>
-      </div>
-    </div>
   );
 }
 

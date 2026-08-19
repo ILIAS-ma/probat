@@ -2,29 +2,45 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import { FadeIn } from "@/components/ui/fade-in";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
-const PAINT = "#3b82f6";
+const PAINT = "#60a5fa";
 
 const KPIS = [
-  { value: "13+", label: "Années d'expérience", accent: false },
-  { value: "24h", label: "Devis sous 24h", accent: false },
-  { value: "0€", label: "Frais de déplacement", accent: false },
+  { value: "13+", label: "Années d'expérience" },
+  { value: "24h", label: "Devis sous 24h" },
+  { value: "0€", label: "Frais de déplacement" },
 ];
 
 export function SitePaintFeature() {
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
+      {/* Photo backdrop — same recipe as the hero, for a matching dark moment */}
+      <div aria-hidden className="absolute inset-0 -z-30">
+        <Image
+          src="https://images.pexels.com/photos/5583116/pexels-photo-5583116.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-gradient-to-b from-black/80 via-black/70 to-black/85"
+      />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-blue-950/25 mix-blend-multiply" />
       <AmbientPaint />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="glass-strong grid gap-10 p-8 md:grid-cols-2 md:p-14 lg:p-16">
+        <div className="grid gap-10 rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-2xl md:grid-cols-2 md:p-14 lg:p-16">
           {/* LEFT — Content */}
           <div className="flex flex-col justify-center">
             <FadeIn delay={0.1}>
-              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
+              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl">
                 Chaque{" "}
                 <PaintHighlight>couche</PaintHighlight> compte,{" "}
                 chaque{" "}
@@ -33,7 +49,7 @@ export function SitePaintFeature() {
             </FadeIn>
 
             <FadeIn delay={0.25}>
-              <p className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg">
+              <p className="mt-6 max-w-lg text-base text-white/70 md:text-lg">
                 Nos équipes qualifiées mettent leur savoir-faire au service de
                 votre projet — de la préparation des supports jusqu&apos;à la
                 finition.
@@ -45,7 +61,10 @@ export function SitePaintFeature() {
                 <PaintSplashButton href="#contact" primary>
                   Demander un devis
                 </PaintSplashButton>
-                <Link href="#services" className="glass-btn">
+                <Link
+                  href="#services"
+                  className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/25 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+                >
                   Découvrir nos services
                 </Link>
               </div>
@@ -56,12 +75,7 @@ export function SitePaintFeature() {
           <div className="flex flex-col justify-center gap-4">
             {KPIS.map((k, i) => (
               <FadeIn key={k.label} delay={0.2 + i * 0.08} direction="left">
-                <KpiGlassCard
-                  value={k.value}
-                  label={k.label}
-                  index={i}
-                  accent={k.accent}
-                />
+                <KpiGlassCard value={k.value} label={k.label} />
               </FadeIn>
             ))}
           </div>
@@ -111,52 +125,27 @@ function PaintHighlight({
           transition={{ duration: 1.1, delay, ease: easeOut }}
         />
       </svg>
-      <span className="relative text-foreground">{children}</span>
+      <span className="relative text-white">{children}</span>
     </span>
   );
 }
 
 /* ---------- Glass KPI card ---------- */
 
-function KpiGlassCard({
-  value,
-  label,
-  index,
-  accent = false,
-}: {
-  value: string;
-  label: string;
-  index: number;
-  accent?: boolean;
-}) {
+function KpiGlassCard({ value, label }: { value: string; label: string }) {
   return (
-    <div
-      className={`group glass relative flex items-center justify-between gap-6 p-6 transition-all duration-500 hover:-translate-y-0.5 md:p-7 ${
-        accent ? "hover:ring-blue-500/30" : "hover:ring-blue-500/30"
-      }`}
-    >
+    <div className="group relative flex items-center justify-between gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-blue-400/30 hover:bg-white/[0.09] md:p-7">
       <div
         aria-hidden
-        className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${
-          accent
-            ? "bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10"
-            : "bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10"
-        }`}
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-400/0 via-blue-400/5 to-blue-400/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
 
       <div className="relative z-10">
-        <div
-          className={`text-4xl font-bold tracking-tight transition-transform duration-500 group-hover:scale-105 md:text-5xl ${
-            accent
-              ? "text-blue-500"
-              : "text-blue-600 dark:text-blue-400"
-          }`}
-        >
+        <div className="text-4xl font-bold tracking-tight text-blue-400 transition-transform duration-500 group-hover:scale-105 md:text-5xl">
           {value}
         </div>
-        <div className="mt-1 text-sm text-muted-foreground">{label}</div>
+        <div className="mt-1 text-sm text-white/70">{label}</div>
       </div>
-
     </div>
   );
 }
@@ -165,10 +154,9 @@ function KpiGlassCard({
 
 function AmbientPaint() {
   return (
-    <div className="pointer-events-none absolute inset-0">
-      <div className="absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="absolute -right-24 bottom-1/4 h-96 w-96 rounded-full bg-blue-400/10 blur-3xl" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,hsl(var(--background))_75%)]" />
+    <div className="pointer-events-none absolute inset-0 -z-0">
+      <div className="absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/4 h-96 w-96 rounded-full bg-blue-300/15 blur-3xl" />
     </div>
   );
 }
