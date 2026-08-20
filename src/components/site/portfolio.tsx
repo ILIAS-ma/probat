@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
 import { useT } from "@/lib/i18n";
 
@@ -11,7 +12,7 @@ const PROJECTS = [
     year: "2024",
     duration: "En cours",
     span: "md:col-span-2 md:row-span-2",
-    gradient: "from-blue-500 via-blue-600 to-blue-800",
+    image: "/img/realisation-3.webp",
   },
   {
     name: "Hotel NH — Paris 8e",
@@ -20,7 +21,7 @@ const PROJECTS = [
     year: "2024",
     duration: "En cours",
     span: "",
-    gradient: "from-zinc-700 to-zinc-900",
+    image: "/img/realisation-2.webp",
   },
   {
     name: "Lacepede",
@@ -29,7 +30,8 @@ const PROJECTS = [
     year: "2024",
     duration: "6 mois",
     span: "",
-    gradient: "from-sky-500 to-indigo-700",
+    image:
+      "https://images.pexels.com/photos/31080809/pexels-photo-31080809.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
   {
     name: "HILIGHT",
@@ -38,7 +40,7 @@ const PROJECTS = [
     year: "2021",
     duration: "18 mois",
     span: "md:col-span-2",
-    gradient: "from-slate-600 to-slate-900",
+    image: "/img/realisation-1.webp",
   },
   {
     name: "Equilis",
@@ -47,7 +49,7 @@ const PROJECTS = [
     year: "2024",
     duration: "En cours",
     span: "md:col-span-2 md:row-span-2",
-    gradient: "from-blue-700 via-indigo-700 to-blue-900",
+    image: "/img/realisation-4.webp",
   },
   {
     name: "Hémicycle",
@@ -56,7 +58,7 @@ const PROJECTS = [
     year: "2019",
     duration: "4 mois",
     span: "",
-    gradient: "from-zinc-600 to-zinc-800",
+    image: "/img/realisation-5.webp",
   },
   {
     name: "Village Nature",
@@ -65,7 +67,8 @@ const PROJECTS = [
     year: "2017",
     duration: "24 mois",
     span: "",
-    gradient: "from-blue-500 to-cyan-700",
+    image:
+      "https://images.pexels.com/photos/10119626/pexels-photo-10119626.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
 ];
 
@@ -86,11 +89,16 @@ export function SitePortfolio() {
       >
         {PROJECTS.map((p) => (
           <StaggerItem key={p.name} className={p.span}>
-            <div className="group relative h-full min-h-[220px] cursor-pointer overflow-hidden rounded-2xl">
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${p.gradient} transition-transform duration-700 ease-out group-hover:scale-110`}
+            <div className="group relative h-full min-h-[220px] cursor-pointer overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-lg shadow-black/5 dark:ring-white/10">
+              <Image
+                src={p.image}
+                alt={`${p.name} — ${p.location}`}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/95" />
+
               <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-500 group-hover:-translate-y-1">
                 <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-widest text-white/70">
                   <span>{p.location}</span>

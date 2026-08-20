@@ -21,10 +21,10 @@ export function SitePaintFeature() {
 
   return (
     <section className="relative overflow-hidden py-28 md:py-36">
-      {/* Photo backdrop — same recipe as the hero, for a matching dark moment */}
+      {/* Photo backdrop — a real DISPO BAT finish, lighter than before */}
       <div aria-hidden className="absolute inset-0 -z-30">
         <Image
-          src="https://images.pexels.com/photos/5583116/pexels-photo-5583116.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          src="/img/apres.png"
           alt=""
           fill
           sizes="100vw"
@@ -33,17 +33,16 @@ export function SitePaintFeature() {
       </div>
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-gradient-to-b from-black/80 via-black/70 to-black/85"
+        className="absolute inset-0 -z-20 bg-gradient-to-b from-white/85 via-white/75 to-white/85 backdrop-blur-sm dark:from-background/85 dark:via-background/75 dark:to-background/85"
       />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-blue-950/25 mix-blend-multiply" />
       <AmbientPaint />
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
-        <div className="grid gap-10 rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur-2xl md:grid-cols-2 md:p-14 lg:p-16">
+        <div className="glass-strong grid gap-10 p-8 md:grid-cols-2 md:p-14 lg:p-16">
           {/* LEFT — Content */}
           <div className="flex flex-col justify-center">
             <FadeIn delay={0.1}>
-              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight text-white md:text-5xl">
+              <h2 className="text-3xl font-bold leading-[1.1] tracking-tight md:text-5xl">
                 {t("feature.title.1")}{" "}
                 <PaintHighlight>{t("feature.title.2")}</PaintHighlight>{" "}
                 {t("feature.title.3")}{" "}
@@ -55,7 +54,7 @@ export function SitePaintFeature() {
             </FadeIn>
 
             <FadeIn delay={0.25}>
-              <p className="mt-6 max-w-lg text-base text-white/70 md:text-lg">
+              <p className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg">
                 {t("feature.desc")}
               </p>
             </FadeIn>
@@ -65,10 +64,7 @@ export function SitePaintFeature() {
                 <PaintSplashButton href="#contact" primary>
                   {t("feature.cta.primary")}
                 </PaintSplashButton>
-                <Link
-                  href="#services"
-                  className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/25 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
-                >
+                <Link href="#services" className="glass-btn">
                   {t("feature.cta.secondary")}
                 </Link>
               </div>
@@ -129,7 +125,7 @@ function PaintHighlight({
           transition={{ duration: 1.1, delay, ease: easeOut }}
         />
       </svg>
-      <span className="relative text-white">{children}</span>
+      <span className="relative text-foreground">{children}</span>
     </span>
   );
 }
@@ -138,17 +134,17 @@ function PaintHighlight({
 
 function KpiGlassCard({ value, label }: { value: string; label: string }) {
   return (
-    <div className="group relative flex items-center justify-between gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-blue-400/30 hover:bg-white/[0.09] md:p-7">
+    <div className="group glass relative flex items-center justify-between gap-6 p-6 transition-all duration-500 hover:-translate-y-0.5 hover:ring-blue-500/30 md:p-7">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-400/0 via-blue-400/5 to-blue-400/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-blue-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
 
       <div className="relative z-10">
-        <div className="text-4xl font-bold tracking-tight text-blue-400 transition-transform duration-500 group-hover:scale-105 md:text-5xl">
+        <div className="text-4xl font-bold tracking-tight text-blue-600 transition-transform duration-500 group-hover:scale-105 dark:text-blue-400 md:text-5xl">
           {value}
         </div>
-        <div className="mt-1 text-sm text-white/70">{label}</div>
+        <div className="mt-1 text-sm text-muted-foreground">{label}</div>
       </div>
     </div>
   );
@@ -159,8 +155,8 @@ function KpiGlassCard({ value, label }: { value: string; label: string }) {
 function AmbientPaint() {
   return (
     <div className="pointer-events-none absolute inset-0 -z-0">
-      <div className="absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-blue-400/20 blur-3xl" />
-      <div className="absolute -right-24 bottom-1/4 h-96 w-96 rounded-full bg-blue-300/15 blur-3xl" />
+      <div className="absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+      <div className="absolute -right-24 bottom-1/4 h-96 w-96 rounded-full bg-blue-400/10 blur-3xl" />
     </div>
   );
 }

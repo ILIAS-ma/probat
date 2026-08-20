@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
@@ -43,17 +44,22 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="grid h-8 w-8 place-items-center rounded-md bg-blue-600 font-bold text-white">
-            D
-          </div>
-          <span
-            className={cn(
-              "text-lg font-bold tracking-tight transition-colors duration-300",
-              solid ? "text-foreground" : "text-white",
-            )}
-          >
-            DISPO BAT
-          </span>
+          <Image
+            src="/img/logo-icon.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 object-contain"
+            priority
+          />
+          <Image
+            src="/img/logo-text.png"
+            alt="DISPO BAT"
+            width={190}
+            height={27}
+            className="h-6 w-auto object-contain sm:h-7"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { LanguageSwitcher } from "@/components/site/language-switcher";
 import { useT } from "@/lib/i18n";
 
@@ -13,12 +14,20 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="grid h-8 w-8 place-items-center rounded-md bg-blue-600 font-bold text-white">
-                D
-              </div>
-              <span className="text-lg font-bold tracking-tight text-white">
-                DISPO BAT
-              </span>
+              <Image
+                src="/img/logo-icon.png"
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
+              <Image
+                src="/img/logo-text.png"
+                alt="DISPO BAT"
+                width={190}
+                height={27}
+                className="h-6 w-auto object-contain sm:h-7"
+              />
             </Link>
             <p className="mt-4 max-w-md text-sm text-white/60">
               {t("footer.tagline")}

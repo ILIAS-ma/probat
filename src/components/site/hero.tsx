@@ -37,7 +37,7 @@ export function SiteHero() {
       {/* Background photo — confined to the hero, rest of the site stays white */}
       <div aria-hidden className="absolute inset-0 -z-30">
         <Image
-          src="https://images.pexels.com/photos/32898042/pexels-photo-32898042.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          src="/img/hero-batiment.webp"
           alt=""
           fill
           sizes="100vw"
