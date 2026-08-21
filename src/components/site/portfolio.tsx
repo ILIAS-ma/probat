@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { PortfolioScrollGallery, type ScrollSlide } from "@/components/site/portfolio-scroll";
 import { useT } from "@/lib/i18n";
 
 const PROJECTS = [
@@ -72,41 +73,99 @@ const PROJECTS = [
   },
 ];
 
+const EXTRA_SLIDES: ScrollSlide[] = [
+  {
+    name: "Immeubles de bureaux",
+    desc: "Travaux de peinture et de finition sur site tertiaire, réalisés en horaires adaptés à l'activité des occupants.",
+    image: "/img/realisation-bureaux-1.webp",
+  },
+  {
+    name: "Espaces de réception",
+    desc: "Finitions haut de gamme — peinture, boiseries et habillages muraux pour des espaces de vie chaleureux.",
+    image: "/img/realisation-reception.webp",
+  },
+  {
+    name: "Grands ensembles",
+    desc: "Intervention sur programmes de grande envergure, en coordination avec les autres corps d'état.",
+    image: "/img/realisation-grand-ensemble.webp",
+  },
+  {
+    name: "Lounge & bar",
+    desc: "Ambiances colorées et finitions soignées pour des espaces d'accueil à forte identité.",
+    image: "/img/realisation-lounge.webp",
+  },
+  {
+    name: "Halls d'accueil",
+    desc: "Revêtements muraux et peinture pour des halls et espaces d'accueil haut de gamme.",
+    image: "/img/realisation-hall-accueil.webp",
+  },
+  {
+    name: "Plateaux de bureaux",
+    desc: "Rénovation de plateaux ouverts — peinture, finitions techniques et remise en état.",
+    image: "/img/realisation-bureaux-2.webp",
+  },
+  {
+    name: "Salles de conférence",
+    desc: "Finitions bois et peinture pour des espaces recevant du public, dans le respect des délais de chantier.",
+    image: "/img/realisation-conference.webp",
+  },
+  {
+    name: "Espaces recevant du public",
+    desc: "Rénovation en environnement à fort trafic, avec délais et nuisances maîtrisés.",
+    image: "/img/realisation-espace-public.jpg",
+  },
+];
+
+const SLIDES: ScrollSlide[] = [
+  ...PROJECTS.map((p) => ({
+    name: p.name,
+    desc: p.desc,
+    image: p.image,
+    location: p.location,
+    year: p.year,
+    duration: p.duration,
+  })),
+  ...EXTRA_SLIDES,
+];
+
 export function SitePortfolio() {
   const { t } = useT();
   return (
-    <section id="references" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-      <FadeIn className="mb-12 max-w-2xl">
+    <section id="references" className="py-24">
+      <FadeIn className="mx-auto mb-12 max-w-2xl px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
           {t("portfolio.title")}
         </h2>
         <p className="mt-4 text-muted-foreground">{t("portfolio.subtitle")}</p>
       </FadeIn>
 
+      {/* Mobile / tablet: grid */}
       <Stagger
-        className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[220px]"
+        className="mx-auto grid max-w-7xl grid-cols-1 gap-3 px-6 sm:grid-cols-2 md:hidden lg:px-8"
         stagger={0.06}
       >
-        {PROJECTS.map((p) => (
-          <StaggerItem key={p.name} className={p.span}>
+        {SLIDES.map((p) => (
+          <StaggerItem key={p.name} className="">
             <div className="group relative h-full min-h-[220px] cursor-pointer overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-lg shadow-black/5 dark:ring-white/10">
               <Image
                 src={p.image}
-                alt={`${p.name} — ${p.location}`}
+                alt={p.location ? `${p.name} — ${p.location}` : p.name}
                 fill
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="100vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/95" />
 
               <div className="absolute inset-x-0 bottom-0 p-5 transition-transform duration-500 group-hover:-translate-y-1">
-                <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-widest text-white/70">
-                  <span>{p.location}</span>
-                  <span className="opacity-40">·</span>
-                  <span>{p.year}</span>
-                  <span className="opacity-40">·</span>
-                  <span>{p.duration}</span>
-                </div>
+                {p.location && (
+                  <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-widest text-white/70">
+                    <span>{p.location}</span>
+                    <span className="opacity-40">·</span>
+                    <span>{p.year}</span>
+                    <span className="opacity-40">·</span>
+                    <span>{p.duration}</span>
+                  </div>
+                )}
                 <div className="mt-2 text-lg font-semibold text-white md:text-xl">
                   {p.name}
                 </div>
@@ -119,6 +178,9 @@ export function SitePortfolio() {
           </StaggerItem>
         ))}
       </Stagger>
+
+      {/* Desktop: scroll-pinned gallery */}
+      <PortfolioScrollGallery slides={SLIDES} />
     </section>
   );
 }
