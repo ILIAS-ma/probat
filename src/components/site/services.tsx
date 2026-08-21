@@ -16,7 +16,7 @@ export function SiteServices() {
   return (
     <section id="services" className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
       <FadeIn className="mb-14 max-w-2xl">
-        <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 md:text-5xl">
           {t("services.title")}
         </h2>
         <p className="mt-4 text-muted-foreground">{t("services.subtitle")}</p>
