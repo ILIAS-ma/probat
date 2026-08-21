@@ -21,13 +21,9 @@ export function SiteFooter() {
                 height={36}
                 className="h-9 w-9 object-contain"
               />
-              <Image
-                src="/img/logo-text.png"
-                alt="DISPO BAT"
-                width={190}
-                height={27}
-                className="h-6 w-auto object-contain sm:h-7"
-              />
+              <span className="text-lg font-extrabold tracking-tight text-blue-500 sm:text-xl">
+                DISPO BAT
+              </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-white/60">
               {t("footer.tagline")}

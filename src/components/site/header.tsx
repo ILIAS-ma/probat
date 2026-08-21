@@ -52,14 +52,9 @@ export function SiteHeader() {
             className="h-9 w-9 object-contain"
             priority
           />
-          <Image
-            src="/img/logo-text.png"
-            alt="DISPO BAT"
-            width={190}
-            height={27}
-            className="h-6 w-auto object-contain sm:h-7"
-            priority
-          />
+          <span className="text-lg font-extrabold tracking-tight text-blue-600 dark:text-blue-400 sm:text-xl">
+            DISPO BAT
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
