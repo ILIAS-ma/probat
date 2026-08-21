@@ -132,7 +132,7 @@ export function SitePortfolio() {
   const { t } = useT();
   return (
     <section id="references" className="py-24">
-      <FadeIn className="mx-auto mb-12 max-w-2xl px-6 lg:px-8">
+      <FadeIn className="mx-auto mb-12 max-w-2xl px-6 text-center lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400 md:text-5xl">
           {t("portfolio.title")}
         </h2>
@@ -166,13 +166,13 @@ export function SitePortfolio() {
                     <span>{p.duration}</span>
                   </div>
                 )}
-                <div className="mt-2 text-lg font-semibold text-white md:text-xl">
+                <div className="mt-3 text-lg font-semibold leading-snug text-white md:text-xl">
                   {p.name}
                 </div>
-                <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-white/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:text-sm">
+                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/80 md:text-sm">
                   {p.desc}
                 </p>
-                <div className="mt-3 h-px w-6 origin-left scale-x-0 bg-white transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="mt-4 h-px w-6 bg-white/60" />
               </div>
             </div>
           </StaggerItem>

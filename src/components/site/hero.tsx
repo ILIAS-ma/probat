@@ -57,12 +57,12 @@ export function SiteHero() {
       <motion.div
         aria-hidden
         style={{ y: glowY, x: glowX }}
-        className="pointer-events-none absolute -right-24 top-1/4 -z-0 h-80 w-80 rounded-full bg-blue-400/30 blur-[110px]"
+        className="pointer-events-none absolute -right-24 top-1/4 -z-0 h-80 w-80 rounded-full bg-white/10 blur-[110px]"
       />
       <motion.div
         aria-hidden
         style={{ y: useTransform(glowY, (v) => v * 0.6), x: useTransform(glowX, (v) => v * -0.8) }}
-        className="pointer-events-none absolute -left-16 bottom-10 -z-0 h-56 w-56 rounded-full bg-blue-300/20 blur-[90px]"
+        className="pointer-events-none absolute -left-16 bottom-10 -z-0 h-56 w-56 rounded-full bg-white/10 blur-[90px]"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 pt-32 text-center lg:px-8">

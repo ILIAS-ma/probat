@@ -94,7 +94,7 @@ export function PaintLoader() {
           </motion.div>
 
           {/* Brand */}
-          <div className="relative z-10 flex flex-col items-center gap-3">
+          <div className="relative z-10 flex flex-col items-center gap-6">
             <motion.span
               initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
