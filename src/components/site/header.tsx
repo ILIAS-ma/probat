@@ -46,15 +46,12 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/img/logo-icon.png"
-            alt=""
+            alt="DISPO BAT"
             width={36}
             height={36}
             className="h-9 w-9 object-contain"
             priority
           />
-          <span className="text-lg font-extrabold tracking-tight text-blue-600 dark:text-blue-400 sm:text-xl">
-            DISPO BAT
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
