@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { FadeIn } from "@/components/ui/fade-in";
 import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
 import { useT } from "@/lib/i18n";
 
@@ -37,8 +37,8 @@ export function SitePartners() {
       >
         <BeforeAfterSlider
           className="aspect-[16/10]"
-          beforeSrc="/img/avant.png"
-          afterSrc="/img/apres.png"
+          beforeSrc="/img/imgt1before.jpg"
+          afterSrc="/img/realisation-espace-public.jpg"
         />
       </motion.div>
 
@@ -48,16 +48,18 @@ export function SitePartners() {
         </h2>
       </FadeIn>
 
-      <Stagger
-        className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4"
-        stagger={0.08}
-      >
-        {PARTNERS.map((p) => (
-          <StaggerItem key={p.name}>
-            <PartnerLogo name={p.name} subtitle={p.subtitle} variant={p.style} />
-          </StaggerItem>
-        ))}
-      </Stagger>
+      <FadeIn className="relative mt-12 overflow-hidden">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent sm:w-32" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-background to-transparent sm:w-32" />
+
+        <div className="flex w-max animate-marquee gap-3 md:gap-4">
+          {[...PARTNERS, ...PARTNERS].map((p, i) => (
+            <div key={`${p.name}-${i}`} className="w-40 shrink-0 md:w-48">
+              <PartnerLogo name={p.name} subtitle={p.subtitle} variant={p.style} />
+            </div>
+          ))}
+        </div>
+      </FadeIn>
     </section>
   );
 }
