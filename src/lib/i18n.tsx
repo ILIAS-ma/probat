@@ -153,6 +153,10 @@ export const DICT: Dict = {
     fr: "Nos qualifications",
     en: "Our qualifications",
   },
+  "partners.qualifications.subtitle": {
+    fr: "Faites glisser le curseur pour visualiser la transformation.",
+    en: "Drag the slider to see the transformation.",
+  },
   "partners.trusted": { fr: "Ils nous font confiance", en: "They trust us" },
 
   // FAQ

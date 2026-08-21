@@ -23,6 +23,9 @@ export function SitePartners() {
         <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
           {t("partners.qualifications")}
         </h2>
+        <p className="mt-3 text-muted-foreground">
+          {t("partners.qualifications.subtitle")}
+        </p>
       </FadeIn>
 
       <motion.div
